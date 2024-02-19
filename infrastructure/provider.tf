@@ -8,6 +8,6 @@ terraform {
   backend "s3" {
     bucket = "terraform-state-datalake-dlhdlemr"
     key    = "state/dlhdlemr/terraform.tfstate"
-    region = "us-east-2"
+    region = var.aws_region
   }
 }
