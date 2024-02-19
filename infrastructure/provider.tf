@@ -1,5 +1,9 @@
+locals {
+  aws_region = var.aws_region
+}
+
 provider "aws" {
-  region = var.aws_region
+  region = local.aws_region
 }
 
 
@@ -8,6 +12,6 @@ terraform {
   backend "s3" {
     bucket = "terraform-state-datalake-dlhdlemr"
     key    = "state/dlhdlemr/terraform.tfstate"
-    region = var.aws_region
+    region = local.aws_region
   }
 }
