@@ -160,4 +160,10 @@ cython_debug/
 #.idea/
 
 tmp
+<<<<<<< HEAD
 lambda_function_payload.zip
+.terraform
+.terraform.lock.hcl
+=======
+lambda_function_payload.zip
+>>>>>>> 85aeccc47398bdfdf19708030d9d68f0d6af0a67
