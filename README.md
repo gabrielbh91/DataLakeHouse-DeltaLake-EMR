@@ -22,12 +22,19 @@ Códigos terraform para criação dos recursos de infraestrutura na AWS.
 - iam: Criação da role para o lambda e vinculando a uma policy.
 
 ## ETL
-Scripts que serão executados pela lambda function.
+Scripts que serão executados pela lambda function. A função lambda cria um cluster EMR e executa os scripts "01_delta_spark_insert.py" e "02_delta_spark_upsert.py".
 
 - 01_delta_spark_insert.py: Conversão dos dados de csv para parquet. Neste exemplo, os microdados do Enem 2019 em csv são convertidos para parquet.
   - s3://datalake-teste/raw-data/enem -> Datalake onde estão salvos os dados que serão transformados. Neste exemplo, estão sendo utilizados os microdados do Enem de 2019.
 - 02_delta_spark_upsert.py: Transformação dos dados usando delta table.
 
+## Desalocando Recursos Localmente
+Desalocando os recursos criados na AWS pelo terraform localmente.
+
+- 1° -> Criar arquivo dentro da pasta infrastrucute o arquivo "lambda_function_payload.zip", apenas porque este arquivo é utilizado pela lamba function. Não precisa ter nenhum dado específico dentro deste arquivo, ele precisa apenas existir.
+- 2° -> Dentreo de infrastrucute executar o comando: terraform destroy
+
+OBS: Só são excluídos os recursos criados pelo terrraform, portanto os recursos criados manualmente e pela lambda function, deverão ser excluídos manualmente.
 
 ## Referências microdados Enem
 
