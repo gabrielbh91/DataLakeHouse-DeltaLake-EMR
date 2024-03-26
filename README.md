@@ -8,6 +8,9 @@ Antes de fazer o deploy desta arquitetura é necessário que alguns pré-requisi
 - Bucket terraform-state-datalake-dlhdlemr, esse bucket é usado para armazenar o backend do terraform, portanto, precisa existir antes de iniciar o deploy.
 - EC2 key_pair dlhdlemr-key-pair, necessário para a criação do cluster do emr.
 
+## Autenticação
+Para realizar a autenticação na AWS CLI, precisam ser configurados os secrets "AWS_ACCESS_KEY_ID" e "AWS_SECRET_ACCESS_KEY" no repositório do projeto no github.
+
 ## Infrastructure
 Códigos terraform para criação dos recursos de infraestrutura na AWS.
 
@@ -18,7 +21,8 @@ Códigos terraform para criação dos recursos de infraestrutura na AWS.
 - lambda.tf: Criação do recurso lambda na aws.
 - iam: Criação da role para o lambda e vinculando a uma policy.
 
-## EMR
+## ETL
+Scripts que serão executados pela lambda function.
 
 - 01_delta_spark_insert.py: Conversão dos dados de csv para parquet. Neste exemplo, os microdados do Enem 2019 em csv são convertidos para parquet.
   - s3://datalake-teste/raw-data/enem -> Datalake onde estão salvos os dados que serão transformados. Neste exemplo, estão sendo utilizados os microdados do Enem de 2019.
