@@ -30,23 +30,14 @@ Scripts que serão executados pela lambda function. A função lambda cria um cl
 
 ## Desalocando Recursos Localmente
 Desalocando os recursos criados na AWS pelo terraform localmente.
-<<<<<<< HEAD
+
 - 1° -> Configurar AWS CLI na máquina local
 - 2° -> Criar arquivo dentro da pasta infrastrucute o arquivo "lambda_function_payload.zip", apenas porque este arquivo é utilizado pela lamba function. Não precisa ter nenhum dado específico dentro deste arquivo, ele precisa apenas existir.
 - 3° -> Dentro de infrastrucute executar o comando: terraform init.
 - 4° -> Dentro de infrastrucute executar o comando: terraform destroy.
-=======
-
-- 1° -> Criar arquivo dentro da pasta infrastrucute o arquivo "lambda_function_payload.zip", apenas porque este arquivo é utilizado pela lamba function. Não precisa ter nenhum dado específico dentro deste arquivo, ele precisa apenas existir.
-- 2° -> Dentreo de infrastrucute executar o comando: terraform destroy
->>>>>>> 85aeccc47398bdfdf19708030d9d68f0d6af0a67
 
 OBS: Só são excluídos os recursos criados pelo terrraform, portanto os recursos criados manualmente e pela lambda function, deverão ser excluídos manualmente.
 
 ## Referências microdados Enem
 
-<<<<<<< HEAD
  Microdados Enem: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
-=======
- Microdados Enem: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
->>>>>>> 85aeccc47398bdfdf19708030d9d68f0d6af0a67
