@@ -1,2 +1,34 @@
 # DataLakeHouse-DeltaLake-EMR
-Projeto para criação de uma arquitetura Data LakeHouse  com Delta Lake e AWS EMR
+Projeto para criação de uma arquitetura Data LakeHouse com Delta Lake e AWS EMR.
+
+## Pré-requisitos
+Antes de fazer o deploy desta arquitetura é necessário que alguns pré-requisitos sejam atendidos.
+
+- Conta na aws e usuário IAM com as permições necessárias para a criação dos recursos utilizados.
+- Bucket terraform-state-datalake-dlhdlemr, esse bucket é usado para armazenar o backend do terraform, portanto, precisa existir antes de iniciar o deploy.
+- EC2 key_pair dlhdlemr-key-pair, necessário para a criação do cluster do emr.
+
+## Autenticação
+Para realizar a autenticação na AWS CLI, precisam ser configurados os secrets "AWS_ACCESS_KEY_ID" e "AWS_SECRET_ACCESS_KEY" no repositório do projeto no github.
+
+## Infrastructure
+Códigos terraform para criação dos recursos de infraestrutura na AWS.
+
+- variables.tf: Variáveis terraform.
+- provider.tf: Cofigurações do provedor cloud. 
+- s3.tf: Cria bucket.
+- s3_files: Importa os scripts python para o bucket.
+- lambda.tf: Criação do recurso lambda na aws.
+- iam: Criação da role para o lambda e vinculando a uma policy.
+
+## ETL
+Scripts que serão executados pela lambda function.
+
+- 01_delta_spark_insert.py: Conversão dos dados de csv para parquet. Neste exemplo, os microdados do Enem 2019 em csv são convertidos para parquet.
+  - s3://datalake-teste/raw-data/enem -> Datalake onde estão salvos os dados que serão transformados. Neste exemplo, estão sendo utilizados os microdados do Enem de 2019.
+- 02_delta_spark_upsert.py: Transformação dos dados usando delta table.
+
+
+## Referências microdados Enem
+
+ Microdados Enem: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
